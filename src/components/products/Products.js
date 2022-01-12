@@ -1,4 +1,5 @@
 import { Container, Row } from "react-bootstrap";
+import Loading from "../Loading/Loading";
 
 const Products = (props) => {
   const {
@@ -10,7 +11,7 @@ const Products = (props) => {
     <Container>
       <Row>
         {loading || !result === true
-          ? "cargando"
+          ? <Loading/>
           : result.map((product, index) => (
               <div key={index}>
                 <p>{product.name}</p>
