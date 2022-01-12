@@ -1,13 +1,14 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
+import "./TopMenu.scss";
 
 const TopMenu = () => {
   return (
     <Navbar bg="dark" variant="dark" className="top-menu">
       <Container>
         <BrandNav />
-        <MenuNav />
+        {/* <MenuNav /> */}
       </Container>
     </Navbar>
   );
