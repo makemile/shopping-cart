@@ -2,11 +2,15 @@ import { Button } from "react-bootstrap";
 import React, { useState } from "react";
 import "./Cart.scss";
 import { ReactComponent as CartEmpty } from "../assets/svg/cart-empty.svg";
+import { ReactComponent as CartFull } from "../assets/svg/cart-full.svg";
 
-const Cart = () => {
+const Cart = (props) => {
+  const { idProductCart } = props;
   const [cartOpen, setCartOpen] = useState(false);
 
   const widthCartContent = cartOpen ? 150 : 0;
+
+  console.log(idProductCart);
 
   const openCart = () => {
     setCartOpen(true);
@@ -21,7 +25,12 @@ const Cart = () => {
   return (
     <>
       <Button variant="link" className="cart">
-        <CartEmpty onClick={openCart} />
+          {idProductCart.length > 0 ? (
+              <CartFull onClick={openCart}/>
+
+          ) : (<CartEmpty onClick={openCart} />)
+          }
+        
       </Button>
       <div className="cart-content" style={{ width: widthCartContent }}>
         todos mis productos

@@ -14,8 +14,11 @@ const App = () => {
     getProductCart();
   }, []);
 
+  
+
   const getProductCart = () => {
     const idProduct = localStorage.getItem(STORAGE_PRODUCTS_CART);
+  
 
     if (idProduct) {
       const idProductSplit = idProduct.split(",");
@@ -36,7 +39,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <TopMenu />
+      <TopMenu idProductCart={idProductCart} />
       <Products products={products} addProductCart={addProductCart} />
       <ToastContainer
         position="bottom-left"
