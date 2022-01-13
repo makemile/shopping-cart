@@ -6,9 +6,7 @@ const Products = (props) => {
   const {
     products: { loading, result, error },
     addProductCart,
-
   } = props;
-
 
   return (
     <Container>
@@ -16,9 +14,13 @@ const Products = (props) => {
         {loading || !result === true ? (
           <Loading />
         ) : (
-          result.map((product, index) =>
-
-            <Product key={index}   product={product} addProductCart={addProductCart}/>)
+          result.map((product, index) => (
+            <Product
+              key={index}
+              product={product}
+              addProductCart={addProductCart}
+            />
+          ))
         )}
       </Row>
     </Container>

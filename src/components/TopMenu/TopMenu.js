@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
+import Cart from "../Cart/Cart";
 import "./TopMenu.scss";
 
 const TopMenu = () => {
@@ -8,6 +9,7 @@ const TopMenu = () => {
     <Navbar bg="dark" variant="dark" className="top-menu">
       <Container>
         <BrandNav />
+        <Cart/>
         {/* <MenuNav /> */}
       </Container>
     </Navbar>

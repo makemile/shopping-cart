@@ -4,7 +4,7 @@ import Products from "./components/products/Products";
 import { ToastContainer, toast } from "react-toastify";
 import { urlApiProducts } from "./utils/constants";
 import { STORAGE_PRODUCTS_CART } from "./utils/constants";
-import { useState,  useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
   const products = useFecth(urlApiProducts, null);
@@ -12,19 +12,18 @@ const App = () => {
 
   useEffect(() => {
     getProductCart();
-  }, [])
+  }, []);
 
   const getProductCart = () => {
-    const  idProduct = localStorage.getItem(STORAGE_PRODUCTS_CART);
+    const idProduct = localStorage.getItem(STORAGE_PRODUCTS_CART);
 
-    if(idProduct ){
+    if (idProduct) {
       const idProductSplit = idProduct.split(",");
       setIdProductCart(idProductSplit);
-    }else{
+    } else {
       setIdProductCart([]);
     }
-
-  }
+  };
 
   const addProductCart = (id, name) => {
     const idProduct = idProductCart;
@@ -40,18 +39,15 @@ const App = () => {
       <TopMenu />
       <Products products={products} addProductCart={addProductCart} />
       <ToastContainer
-      position="bottom-left"
-      autoClose={5000}
-      hideProgressBar
-      newestOnTop
-      closeOnClick={false}
-      rtl={false}
-      pauseOnVisibilityChange={false}
-      draggable
-      pauseOnHover={false}
-
-
-      
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick={false}
+        rtl={false}
+        pauseOnVisibilityChange={false}
+        draggable
+        pauseOnHover={false}
       />
     </div>
   );
