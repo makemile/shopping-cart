@@ -2,56 +2,56 @@
     {
       "id": 1,
       "name": "Helado sándwich de nata",
-      "image": "img/sandwich-nata.jpg",
+      "image": "https://www.supertambo.es/web/tambo/img/productos/5616/sandwich_nata_alteza_6x100ml_68.jpg",
       "extraInfo": "Caja 6 ud. (600 ml",
       "price": 1.2
     },
     {
       "id": 2,
       "name": "Helado cucurucho de vainilla",
-      "image": "img/cucuruchos-vainilla.jpg",
+      "image": "https://static.vecteezy.com/system/resources/previews/000/806/640/non_2x/vanilla-ice-cream-cone-a-white-photo.jpg",
       "extraInfo": "Caja 6 ud. (720 ml",
       "price": 1.55
     },
     {
       "id": 3,
       "name": "Mini surtido",
-      "image": "img/mini-surtido.jpg",
+      "image": "https://www.bofrost.es/writable/products/images-v2/05077.jpg",
       "extraInfo": "Caja 6 ud. (720 ml)",
       "price": 1.55
     },
     {
       "id": 4,
       "name": "Helado mini doble sándwich nata",
-      "image": "img/sandwich-doble.jpg",
+      "image": "https://helados-estiu.com/wp-content/uploads/2019/11/minisandwich-nata.jpg",
       "extraInfo": "Caja 6 ud. (480 ml)",
       "price": 1.99
     },
     {
       "id": 5,
       "name": "Helado de fresa",
-      "image": "img/fresa-hielo.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0flYGOASJI_c1fwMbXHdG0c3lK4kuPn5Jw&usqp=CAU",
       "extraInfo": "Caja 10 ud. (750 ml)",
       "price": 1.65
     },
     {
       "id": 6,
       "name": "Helado yogoice Mr. Toddy",
-      "image": "img/yogoice.jpg",
+      "image": "https://es.openfoodfacts.org/images/products/841/212/674/0104/packaging_es.11.400.jpg",
       "extraInfo": "Caja 8 ud. (450 ml)",
       "price": 1.7
     },
     {
       "id": 7,
       "name": "Helado sabor huevo de chocolate",
-      "image": "img/huevo.jpg",
+      "image": "https://pbs.twimg.com/media/DHWtQz3XUAIvnAD.jpg",
       "extraInfo": "Tarrina 1 L.",
       "price": 2.55
     },
     {
       "id": 8,
       "name": "Medios cocos helados",
-      "image": "img/medio-coco-helado.jpg",
+      "image": "https://www.preciode.es/wp-content/uploads/2021/01/Medios-cocos-helados-Hacendado-Mercadona.jpeg",
       "extraInfo": "Caja 2 ud. (350 ml)",
       "price": 2.05
     }
