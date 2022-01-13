@@ -9,7 +9,7 @@ const TopMenu = () => {
     <Navbar bg="dark" variant="dark" className="top-menu">
       <Container>
         <BrandNav />
-        <Cart/>
+        <Cart />
         {/* <MenuNav /> */}
       </Container>
     </Navbar>
