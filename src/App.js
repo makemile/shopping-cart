@@ -4,17 +4,33 @@ import Products from "./components/products/Products";
 import { ToastContainer, toast } from "react-toastify";
 import { urlApiProducts } from "./utils/constants";
 import { STORAGE_PRODUCTS_CART } from "./utils/constants";
-import { useState } from "react";
+import { useState,  useEffect } from "react";
 
 const App = () => {
   const products = useFecth(urlApiProducts, null);
-  const [idProduct, setIdiProduct] = useState([]);
+  const [idProductCart, setIdProductCart] = useState([]);
+
+  useEffect(() => {
+    getProductCart();
+  }, [])
+
+  const getProductCart = () => {
+    const  idProduct = localStorage.getItem(STORAGE_PRODUCTS_CART);
+
+    if(idProduct ){
+      const idProductSplit = idProduct.split(",");
+      setIdProductCart(idProductSplit);
+    }else{
+      setIdProductCart([]);
+    }
+
+  }
 
   const addProductCart = (id, name) => {
-    const productId = idProduct;
-    productId.push(id);
-    setIdiProduct(productId);
-    localStorage.setItem(STORAGE_PRODUCTS_CART, productId);
+    const idProduct = idProductCart;
+    idProduct.push(id);
+    setIdProductCart(idProduct);
+    localStorage.setItem(STORAGE_PRODUCTS_CART, idProductCart);
 
     toast.success(`${name} añadido al carrito`);
   };
