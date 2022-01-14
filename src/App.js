@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <TopMenu idProductCart={idProductCart} />
+      <TopMenu idProductCart={idProductCart} getProductCart={getProductCart} />
       <Products products={products} addProductCart={addProductCart} />
       <ToastContainer
         position="bottom-left"
