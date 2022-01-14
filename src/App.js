@@ -18,7 +18,6 @@ const App = () => {
 
   const getProductCart = () => {
     const idProduct = localStorage.getItem(STORAGE_PRODUCTS_CART);
-  
 
     if (idProduct) {
       const idProductSplit = idProduct.split(",");
@@ -33,6 +32,8 @@ const App = () => {
     idProduct.push(id);
     setIdProductCart(idProduct);
     localStorage.setItem(STORAGE_PRODUCTS_CART, idProductCart);
+    getProductCart();
+    
 
     toast.success(`${name} añadido al carrito`);
   };
