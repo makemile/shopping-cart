@@ -5,7 +5,7 @@ import Cart from "../Cart/Cart";
 import "./TopMenu.scss";
 
 const TopMenu = (props) => {
-  const {idProductCart} = props;
+  const { idProductCart } = props;
   return (
     <Navbar bg="dark" variant="dark" className="top-menu">
       <Container>
