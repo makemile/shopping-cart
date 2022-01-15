@@ -8,39 +8,40 @@ import { useState, useEffect } from "react";
 
 const App = () => {
   const products = useFecth(urlApiProducts, null);
-  const [idProductCart, setIdProductCart] = useState([]);
+  const [productCart,setproductCart] = useState([]);
 
   useEffect(() => {
     getProductCart();
   }, []);
-
-  
 
   const getProductCart = () => {
     const idProduct = localStorage.getItem(STORAGE_PRODUCTS_CART);
 
     if (idProduct) {
       const idProductSplit = idProduct.split(",");
-      setIdProductCart(idProductSplit);
+     setproductCart(idProductSplit);
     } else {
-      setIdProductCart([]);
+     setproductCart([]);
     }
   };
 
   const addProductCart = (id, name) => {
-    const idProduct = idProductCart;
+    const idProduct = productCart;
     idProduct.push(id);
-    setIdProductCart(idProduct);
-    localStorage.setItem(STORAGE_PRODUCTS_CART, idProductCart);
+   setproductCart(idProduct);
+    localStorage.setItem(STORAGE_PRODUCTS_CART, productCart);
     getProductCart();
-    
 
     toast.success(`${name} añadido al carrito`);
   };
 
   return (
     <div className="App">
-      <TopMenu idProductCart={idProductCart} getProductCart={getProductCart} />
+      <TopMenu
+        productCart={productCart}
+        getProductCart={getProductCart}
+        products={products}
+      />
       <Products products={products} addProductCart={addProductCart} />
       <ToastContainer
         position="bottom-left"

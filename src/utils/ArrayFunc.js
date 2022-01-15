@@ -1,6 +1,6 @@
 export const countDuplicatesItemArray = (value, array) => {
   let count = 0;
-  Array.forEach((arrayValue) => {
+  array.forEach((arrayValue) => {
     if (arrayValue == value) {
       count++;
     }
