@@ -9,6 +9,7 @@ import { STORAGE_PRODUCTS_CART } from "../../utils/constants";
 import {
   countDuplicatesItemArray,
   RemoveArrayDuplicates,
+  RemoveItemArray,
 } from "../../utils/ArrayFunc";
 
 const Cart = (props) => {
@@ -38,6 +39,21 @@ const Cart = (props) => {
     localStorage.removeItem(STORAGE_PRODUCTS_CART);
     getProductCart();
   };
+
+  const increaseQuantity = (id) => {
+    const arrayItemCary = productCart;
+    productCart.push(id);
+    localStorage.setItem(STORAGE_PRODUCTS_CART, arrayItemCary);
+    getProductCart();
+  };
+
+  const decreaseQuantity = (id) => {
+    const arrayItemCary = productCart;
+    const result = RemoveItemArray(arrayItemCary, id.toString());
+    localStorage.setItem(STORAGE_PRODUCTS_CART, result);
+    getProductCart();
+  };
+
   return (
     <>
       <Button variant="link" className="cart">
@@ -49,14 +65,20 @@ const Cart = (props) => {
       </Button>
       <div className="cart-content" style={{ width: widthCartContent }}>
         <CartContentHeader closeCart={closeCart} emtypCart={emtypCart} />
+        <div className="cart-content__products">
+          
         {singleCart.map((idProductCart, index) => (
           <CartContentProduct
             key={index}
             products={products}
             idProductCart={idProductCart}
             idsProductsCart={productCart}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
           />
         ))}
+      </div>
+      <CartContentFooter/>
       </div>
     </>
   );
@@ -84,26 +106,31 @@ function CartContentProduct(props) {
     products: { loading, result },
     idsProductsCart,
     idProductCart,
+    increaseQuantity,
+    decreaseQuantity,
   } = props;
-  
 
   if (!loading && result) {
     return result.map((product, index) => {
       if (idProductCart == product.id) {
-        const quantity = countDuplicatesItemArray(
-          product.id,
-          idsProductsCart
-        );
+        const quantity = countDuplicatesItemArray(product.id, idsProductsCart);
         return (
-          <RenderProduct key={index} product={product} quantity={quantity} />
+          <RenderProduct
+            key={index}
+            product={product}
+            quantity={quantity}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+          />
         );
       }
     });
   }
+  return null;
 }
 
 function RenderProduct(props) {
-  const { product, quantity } = props;
+  const { product, quantity, increaseQuantity, decreaseQuantity } = props;
   return (
     <div className="cart-content__product">
       <div className="cart-content__product-info">
@@ -114,8 +141,8 @@ function RenderProduct(props) {
         <div>
           <p>{quantity}ud</p>
           <div>
-            <Button>+</Button>
-            <Button>-</Button>
+            <Button onClick={() => increaseQuantity(product.id)}>+</Button>
+            <Button onClick={() => decreaseQuantity(product.id)}>-</Button>
           </div>
         </div>
       </div>
@@ -123,4 +150,16 @@ function RenderProduct(props) {
   );
 }
 
+function CartContentFooter(props) {
+  const { cartTotalPrice } = props;
+  return (
+    <div className="cart-content__footer">
+      <div>
+        <p>Total:</p> 
+        <p>s/9.00</p>
+      </div>
+      <Button>Tramitar</Button>
+    </div>
+  );
+}
 export default Cart;
