@@ -16,6 +16,7 @@ const Cart = (props) => {
   const { productCart, getProductCart, products } = props;
   const [cartOpen, setCartOpen] = useState(false);
   const [singleCart, setSingleCart] = useState([]);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   useEffect(() => {
     const allProductId = RemoveArrayDuplicates(productCart);
@@ -23,6 +24,32 @@ const Cart = (props) => {
   }, [productCart]);
 
   const widthCartContent = cartOpen ? 300 : 0;
+
+  useEffect(() => {
+    const productData = [];
+    let totalPrice = 0;
+
+    const allProductId = RemoveArrayDuplicates(productCart);
+    allProductId.forEach((productId) => {
+      const quantity = countDuplicatesItemArray(productId, productCart);
+      const productValue = {
+        id: productId,
+        quantity: quantity,
+      };
+      productData.push(productValue);
+    });
+    if (!products.loading && products.result) {
+      products.result.forEach((product) => {
+        productData.forEach((item) => {
+          if (product.id == item.id) {
+            const totalValue = product.price + item.quantity;
+            totalPrice = totalPrice + totalValue;
+          }
+        });
+      });
+    }
+    setCartTotalPrice(totalPrice);
+  }, [productCart, products]);
 
   const openCart = () => {
     setCartOpen(true);
@@ -66,19 +93,18 @@ const Cart = (props) => {
       <div className="cart-content" style={{ width: widthCartContent }}>
         <CartContentHeader closeCart={closeCart} emtypCart={emtypCart} />
         <div className="cart-content__products">
-          
-        {singleCart.map((idProductCart, index) => (
-          <CartContentProduct
-            key={index}
-            products={products}
-            idProductCart={idProductCart}
-            idsProductsCart={productCart}
-            increaseQuantity={increaseQuantity}
-            decreaseQuantity={decreaseQuantity}
-          />
-        ))}
-      </div>
-      <CartContentFooter/>
+          {singleCart.map((idProductCart, index) => (
+            <CartContentProduct
+              key={index}
+              products={products}
+              idProductCart={idProductCart}
+              idsProductsCart={productCart}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+            />
+          ))}
+        </div>
+        <CartContentFooter cartTotalPrice={cartTotalPrice} />
       </div>
     </>
   );
@@ -155,8 +181,8 @@ function CartContentFooter(props) {
   return (
     <div className="cart-content__footer">
       <div>
-        <p>Total:</p> 
-        <p>s/9.00</p>
+        <p>Total:</p>
+        <p>{cartTotalPrice.toFixed(2)}</p>
       </div>
       <Button>Tramitar</Button>
     </div>

@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 
 const App = () => {
   const products = useFecth(urlApiProducts, null);
-  const [productCart,setproductCart] = useState([]);
+  const [productCart, setproductCart] = useState([]);
 
   useEffect(() => {
     getProductCart();
@@ -19,16 +19,16 @@ const App = () => {
 
     if (idProduct) {
       const idProductSplit = idProduct.split(",");
-     setproductCart(idProductSplit);
+      setproductCart(idProductSplit);
     } else {
-     setproductCart([]);
+      setproductCart([]);
     }
   };
 
   const addProductCart = (id, name) => {
     const idProduct = productCart;
     idProduct.push(id);
-   setproductCart(idProduct);
+    setproductCart(idProduct);
     localStorage.setItem(STORAGE_PRODUCTS_CART, productCart);
     getProductCart();
 
