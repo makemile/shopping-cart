@@ -1,0 +1,38 @@
+.product{
+    padding: 0;
+
+img{
+    height: 214px;
+   
+
+    .btn{
+        width: 100%;
+        background-color: transparent !important;
+        border-color: #00983d;
+        border-radius: 50px;
+
+        &:hover,
+        &:active,
+        &:focus{
+            background-color: silver !important;
+            border-color: #00983d;
+            color:black;
+            box-shadow: none !important;
+
+        }
+
+
+
+    }
+}
+}
+
+.h5{
+    font-size: 0.9rem !important;
+   
+}
+
+.row{
+    row-gap: 2rem !important;
+    margin-top: 5rem !important;
+}
